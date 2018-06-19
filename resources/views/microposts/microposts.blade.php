@@ -13,6 +13,8 @@
                 <p>{!! nl2br(($micropost->content)) !!}</p>
             </div>
             <div>
+                @include('user_fav.fav_button', ['user' => $user])
+                
                 @if (Auth::user()->id == $micropost->user_id)
                     {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
